@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600&display=swap');
+
+.navbar {
+  background-color: #082f49; /* Dark blue background for the navbar */
+  padding: 5px; /* Reduced padding for a shorter navbar height */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for a subtle 3D effect */
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.navbar-brand {
+  font-size: 1rem; /* Font size for the brand */
+  color: #f0f0f0; /* Light color for the brand name */
+  font-family: 'Geologica', sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 600; /* Bold font for brand */
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 2rem; /* Spacing between menu items */
+  list-style: none;
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+.navbar-item {
+  margin: 0;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: #e0f2fe; /* Light blue color for links */
+  font-size: 1rem; /* Font size for links */
+  font-family: 'Geologica', sans-serif;
+  font-weight: 300;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  padding: 0.4rem 0; /* Adjusted padding for links to fit in the shorter navbar */
+  border-bottom: 2px solid transparent;
+}
+
+.navbar-link:hover {
+  color: #2563eb; /* Bright blue for hover effect */
+}
+
+.navbar-link.active {
+  color: #ffffff; /* White color for active link */
+  border-bottom: 2px solid #ffffff; /* White underline for active link */
+}
