@@ -1,0 +1,230 @@
+/* Container for the products */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+  
+  /* Styling for individual product cards */
+  .product-card {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Hover effect */
+  .product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Styling for the product information */
+  .product-info h2 {
+    margin: 0 0 10px;
+    font-size: 18px;
+  }
+  
+  .product-info p {
+    font-size: 14px;
+    margin: 0 0 10px;
+  }
+  
+  .product-info span {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  /* Styling for the action buttons */
+  .product-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .add-button,
+  .remove-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-button {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .add-button:hover {
+    background-color: #45a049;
+  }
+  
+  .remove-button {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .remove-button:hover {
+    background-color: #d32f2f;
+  }
+  
+  .sold-out {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .sold-out-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+    border-radius: 6px;
+    border: none;
+    cursor: not-allowed;
+    
+  background: #6E6D70;
+  box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.12);
+  color: #DFDEDF;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  }
+
+
+.sold-out-button:focus {
+  box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+  outline: 0;
+}
+  
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	height: 100vh;
+	background-color: #0d234b;
+	color: #fff;
+	font-size: 24px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.star-rating {
+	white-space: nowrap;
+}
+.star-rating [type="radio"] {
+	appearance: none;
+}
+.star-rating i {
+	font-size: 1.2em;
+	transition: 0.3s;
+}
+
+.star-rating label:is(:hover, :has(~ :hover)) i {
+	transform: scale(1.35);
+	color: #fffdba;
+	animation: jump 0.5s calc(0.3s + (var(--i) - 1) * 0.15s) alternate infinite;
+}
+.star-rating label:has(~ :checked) i {
+	color: #faec1b;
+	text-shadow: 0 0 2px #ffffff, 0 0 10px #ffee58;
+}
+
+@keyframes jump {
+	0%,
+	50% {
+		transform: translatey(0) scale(1.35);
+	}
+	100% {
+		transform: translatey(-15%) scale(1.35);
+	}
+}
+
+.product-details {
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.product-details h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.product-details h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.product-details p {
+  font-size: 16px;
+  color: #666;
+}
+
+.product-details button {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.product-details button:hover {
+  background-color: #45a049;
+}
+
+.product-details .reviews {
+  margin-top: 20px;
+}
+
+.product-details .reviews h4 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.review-item {
+  background-color: #f4f4f4;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.rating-stars {
+  color: gold;
+}
+.cart-icon {
+  position: relative;
+  display: inline-block; /* Ensure the container wraps tightly around the icon */
+  cursor: pointer;
+  font-size: 36px; /* Adjust the size as needed */
+}
+
+.item-count {
+  position: absolute;
+  top: 10px; /* Position slightly above the icon */
+  right: 0px; /* Position slightly to the right of the icon */
+  background-color: red; /* Background color for visibility */
+  color: white;
+  border-radius: 50%;
+  padding: 2px 5px; /* Padding for the badge */
+  font-size: 12px; /* Font size for the badge */
+  min-width: 20px; /* Ensure the badge is wide enough */
+  height: 20px; /* Height to keep it circular */
+  display: flex; /* Use flexbox for centering */
+  align-items: left; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+}
+

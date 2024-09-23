@@ -3,13 +3,17 @@
   <div class="navbar-container">
     <h1 class="navbar-brand">MyApp</h1>
     <ul class="navbar-menu">
-      <li class="navbar-item">
+      <li class="navbar-item" *ngIf="!isLoggedIn">
         <a href="/login" routerLinkActive="active" ariaCurrentWhenActive="page" 
         class="navbar-link"  click>login</a>
       </li>
-      <li class="navbar-item">
+      <li class="navbar-item" *ngIf="!isLoggedIn">
         <a href="/Signup" routerLinkActive="active" ariaCurrentWhenActive="page" 
         class="navbar-link" (click)="navigateToLogin()" >Sign Up</a>
+      </li>
+      <li class="navbar-item" *ngIf="isLoggedIn">
+        <a href="/signout" routerLinkActive="active" ariaCurrentWhenActive="page" 
+        class="navbar-link" (click)="navigateToLogin()" >Sign Out</a>
       </li>
     </ul>
   </div>

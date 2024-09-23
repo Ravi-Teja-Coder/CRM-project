@@ -1,20 +1,20 @@
 package com.example.demo.model;
 
+import com.example.demo.enums.UserRole;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Data;
 
-//import org.springframework.data.annotation.Id;
-//import org.springframework.data.mongodb.core.annotation.Collation;
-//import org.springframework.data.mongodb.core.index.Indexed;
-//import org.springframework.data.mongodb.core.mapping.Document;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-//@Document(collection = "User")
 @Entity
 @Table(name="Users")
+@Data
 public class User {
 
 	@Id
@@ -26,56 +26,9 @@ public class User {
 	private String email;
 	private String password;
 	private String confirmPassword;
-	
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
-	}
+	private UserRole userRole;
+	private Long phoneNumber;
+	private LocalDate dob;
 
-	public User(int userId, String name, String email, String password, String confirmPassword) {
-		super();
-		this.userId = userId;
-		this.name = name;
-		this.email = email;
-		this.password = password;
-		this.confirmPassword = confirmPassword;
-		
-	}
-	public User() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", name=" + name + ", email=" + email + ", password=" + password
-				+ ", confirmPassword=" + confirmPassword +  "]";
-	}
-	
-	
+
 }

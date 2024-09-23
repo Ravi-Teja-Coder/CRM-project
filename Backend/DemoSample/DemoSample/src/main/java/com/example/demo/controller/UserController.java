@@ -1,23 +1,19 @@
 package com.example.demo.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.example.demo.enums.UserRole;
+import com.example.demo.response.UserDto;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.config.JWTTokenGeneratorImpl;
 import com.example.demo.config.JWTTokenParser;
@@ -112,5 +108,25 @@ public class UserController {
 	    responseMap.put("token", token); // Add the token to the response
 
 	    return new ResponseEntity<>(responseMap, HttpStatus.OK);
+	}
+
+	@GetMapping()
+	public ResponseEntity<?> findAllBasedOnRole(@RequestParam(value = "role", required = false) UserRole role) {
+
+		return ResponseHandler.generateResponse("Successfully retrieved data!", HttpStatus.OK,
+				userService.getAllUsersBasedOnRole(role));
+
+	}
+
+	@PutMapping()
+	public ResponseEntity<?> updateUserById(@RequestBody User user) throws UserNotFoundException {
+		return ResponseHandler.generateResponse("User updated successfully", HttpStatus.OK,
+				userService.updateUserById(user));
+	}
+
+	@DeleteMapping("/id/{id}")
+	public ResponseEntity<?> deleteUserByEmailId(@PathVariable int id) throws UserNotFoundException {
+		return ResponseHandler.generateResponse("User deleted successfully", HttpStatus.OK,
+				userService.deleteUserById(id));
 	}
 }

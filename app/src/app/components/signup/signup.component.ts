@@ -50,7 +50,7 @@ export class SignupComponent {
     }).subscribe(response => {
       console.log('Success!', response);
       this.loading = false; // Stop loading on success
-      this.router.navigate(['/Login']); // Navigate to a different route if needed
+      this.router.navigate(['/login']); // Navigate to a different route if needed
     },
     error => {
       console.error('Error occurred:', error);

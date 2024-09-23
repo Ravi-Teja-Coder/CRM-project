@@ -1,0 +1,62 @@
+<div class="cart-icon">
+  <i class="fas fa-shopping-cart"></i> <!-- Your cart icon -->
+  <span class="item-count">{{ cartItem?.quantity }}</span>
+</div>
+
+<div class="product-container" *ngIf="!selectedProduct">
+  <!-- Product List -->
+  <div *ngFor="let product of products" class="product-card" (click)="selectProduct(product)">
+    <div class="product-info">
+      <h2>{{ product.name }}</h2>
+      <p>{{ product.description }}</p>
+      <span>£{{ product.price }}</span>
+      <br>
+      <span *ngIf="product.quantity > 0">Quantity {{ product.quantity }}</span>
+      <span *ngIf="product.quantity === 0" class="sold-out">SOLD OUT</span>
+    </div>
+    <div class="product-actions">
+      <!-- Disable the button and change its class when quantity is 0 -->
+      <button
+        [class.add-button]="product.quantity > 0" 
+        [class.sold-out-button]="product.quantity === 0"
+        [disabled]="product.quantity === 0"
+        (click)="addToCart(product)"
+      >
+      Add to Cart
+      </button>
+      <button class="remove-button" (click)="removeFromCart(product)">Remove</button>
+    </div>
+  </div>
+</div>
+<!-- Detailed Product View -->
+<div *ngIf="selectedProduct" class="product-details">
+  <h2>Product Details</h2>
+  <h3>{{ selectedProduct.name }}</h3>
+  <p>{{ selectedProduct.description }}</p>
+  <p>Price: £{{ selectedProduct.price }}</p>
+  <p>Quantity: {{ selectedProduct.quantity > 0 ? selectedProduct.quantity : 'SOLD OUT' }}</p>
+  <p>Review and rating ::{{selectProduct}}</p>
+  <!-- Button to Give a Rating and Review -->
+  <button (click)="giveReview()">Rate & Review</button>
+
+  <!-- Section to Show Reviews -->
+  <div class="reviews" *ngIf="reviewsVisible">
+    <h4>Reviews:</h4>
+    <div *ngFor="let review of reviews" class="review-item">
+      <p>{{ review }}</p>
+      <div class="rating-stars">
+        ★★★★★
+      </div>
+    </div>
+  </div>
+
+  <!-- Rating and Review Form (Placeholder for Future Work) -->
+  <div class="rating-form" *ngIf="reviewFormVisible">
+    <h4>Give Your Rating and Review:</h4>
+    <input type="text" placeholder="Write your review here" >
+    <button (click)="submitReview()">Submit Review</button>
+  </div>
+
+  <!-- Close Button -->
+  <button (click)="selectedProduct = null">Close</button>
+</div>

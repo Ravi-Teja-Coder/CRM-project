@@ -1,0 +1,79 @@
+<div class="table-container" *ngIf="formDisplay===false">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <!-- Role Column -->
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef> Role </th>
+      <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+    </ng-container>
+
+    <!-- Phone Number Column -->
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+      <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <div class="example-button-container">
+          <!-- <button mat-icon-button color="primary" (click)="editCustomer(element)">
+            <mat-icon>edit</mat-icon>
+          </button> -->
+          <button class="button-10" role="button" (click)="editCustomer(element)"> Edit </button>
+          <button class="button-10-delete" role="button" (click)="deleteCustomer(element.id)"> Delete </button>
+  
+        </div>
+        
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSize]="5"></mat-paginator>
+</div>
+
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" *ngIf="formDisplay">
+ 
+  <input type="hidden" id="userId" [(ngModel)]="userData.userId" formControlName="userId" >
+  <div>
+    <label for="name">Name:</label>
+    <input id="name" type="text" [(ngModel)]="userData.name" formControlName="name" placeholder="Enter your name" />
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" type="email" [(ngModel)]="userData.email" formControlName="email" placeholder="Enter your email" />
+  </div>
+
+  <div>
+    <label for="phoneNumber">Phone Number:</label>
+    <input id="phoneNumber" type="tel" [(ngModel)]="userData.phoneNumber" formControlName="phoneNumber" placeholder="Enter your phone number" />
+  </div>
+
+  <div>
+    <label for="dob">Date of Birth:</label>
+    <input id="dob" type="date" formControlName="dob" [(ngModel)]="userData.dob" />
+  </div>
+
+  <button type="submit">Update</button>
+</form>
